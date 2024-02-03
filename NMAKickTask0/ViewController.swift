@@ -7,13 +7,28 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
+    
+    private let squareView = SquareView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        setupLayout()
     }
 
+}
 
+private extension ViewController {
+    func setupLayout() {
+        view.addSubview(squareView)
+        squareView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            squareView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100),
+            squareView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            squareView.widthAnchor.constraint(equalToConstant: 100),
+            squareView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+    }
 }
 
